@@ -1,1 +1,19 @@
 def DuplicatesRemoval(list):
+    Duplicate = [0] * len(list)
+    copy = list.view()
+    DuplicatesRemoved = True
+    for Count1 in range(0,len(list)):
+        for Count2 in range(0, len(list)):
+            if Count1 != Count2 and list[Count1] == copy[Count2]:
+                Duplicate[Count1] = 1
+                Duplicate[Count2] = 1
+                DuplicatesRemoved = False
+    Counter = 0
+
+    while DuplicatesRemoved is False:
+        if Duplicate[Count] == 1:
+
+#problems with current approach:
+#1. i think by removing duplicates, it means keep one copy of the item. e.g. 
+#DuplicatesRemoval([1,1,2,3,5,5]) should return [1,2,3,5], not [2,3]
+#2. lines 7-10 is inefficient, as it will repeat even if that index was already found to be duplicated
