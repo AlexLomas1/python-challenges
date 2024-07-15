@@ -20,7 +20,7 @@ while Count1 < len(word1) or Count2 < len(word2):
     else:
         #Alternates value of Current so that a character from the other string will be added next
         Current = 1
-        #Body of if statement will only occur if there are still characters from word1 to be added
+        #Body of if statement will only occur if there are still characters from word2 to be added
         if Count2 < len(word2):
             Merged[Count1+Count2] = word2[Count2]
             Count2 += 1
