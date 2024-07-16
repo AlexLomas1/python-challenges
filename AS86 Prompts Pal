@@ -3,7 +3,7 @@ import random
 prompts = open("promptspal.txt")
 #Reads the file and stores its contents in an array, with each line as an element in the array
 PromptsList = prompts.readlines()
-#Prints a random element from the array PromptsList. random.choice() returns a random element from the specified sequence
+#Prints a random element from PromptsList
 print(random.choice(PromptsList))
 #Closes the text file
 prompts.close()
