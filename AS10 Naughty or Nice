@@ -33,7 +33,7 @@ NaughtyCount = 0
 #promptspal.txt is used (from AS86) simply because I don't have another text file to test code with
 TextFile = open("promptspal.txt")
 #Reads the text file and saves it in an array, with each line as an element
-#Could  insteaduse Text = (TextFile.read()).split() to seperate file into words rather than lines
+#Could  instead use Text = (TextFile.read()).split() to seperate file into words rather than lines
 Text = TextFile.readlines()
 for Count in range(len(Text)):
     #Checks if current string is considered naughty or nice, and updates counter variables accordingly
