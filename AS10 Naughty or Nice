@@ -1,0 +1,46 @@
+#Function to determine if a string is considered Naughty or Nice
+def NaughtyOrNice(string):
+    #Initialising local variables
+    Count = 0
+    VowelCount = 0
+    DoubleLetter = False
+    ab_cd_pq_xy = False
+    #Converts string to an array
+    string = list(string)
+    while Count < len(string) and not ab_cd_pq_xy:
+        #Checks if current element in array is a vowel
+        if string[Count].lower() in ["a","e","i","o","u"]:
+            VowelCount += 1
+        #Necessary because next two if statements both use string[Count+1], and if Count = len(string)-1 then string[Count+1] does not exist
+        if Count < len(string)-1:
+            #Checks if there is a double letter
+            if string[Count].lower() == string[Count+1].lower():
+                DoubleLetter = True
+            #Checks if any of the bad substrings are present
+            if (string[Count]+string[Count+1]) in ["ab","cd","pq","xy"]:
+                ab_cd_pq_xy = True
+        Count += 1
+    #Checks from the variable values if the string is naughty or nice
+    if VowelCount >= 3 and DoubleLetter and not ab_cd_pq_xy:
+        return "Nice"
+    else:
+        return "Naughty"
+    
+#Initialises counters for the number of nice and naughty strings
+NiceCount = 0
+NaughtyCount = 0
+#Opens text file
+#promptspal.txt is used (from AS86) simply because I don't have another text file to test code with
+TextFile = open("promptspal.txt")
+#Reads the text file and saves it in an array, with each line as an element
+#Could  insteaduse Text = (TextFile.read()).split() to seperate file into words rather than lines
+Text = TextFile.readlines()
+for Count in range(len(Text)):
+    #Checks if current string is considered naughty or nice, and updates counter variables accordingly
+    if NaughtyOrNice(Text[Count]) == "Nice":
+        NiceCount += 1
+    else:
+        NaughtyCount += 1
+
+print("There are",NiceCount,"nice strings in this text file")
+print("There are",NaughtyCount,"naughty strings in this text file")
