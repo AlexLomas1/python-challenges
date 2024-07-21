@@ -1,0 +1,55 @@
+#Opening the files
+File1 = open("if.txt","r")
+File2 = open("mam.txt","r")
+
+#Reading the files
+File1Text = File1.read()
+File2Text = File2.read()
+
+#Closing the files (as they are current open for reading)
+File1.close()
+File2.close()
+
+#Initialising variables for counting
+Count = 0
+IfCounter1 = 0
+IfCounter2 = 0
+#Counting the number of times 'if' appears in each file
+while Count < len(File1Text)-1 or Count < len(File2Text)-1:
+    if Count < len(File1Text)-1:
+        if (File1Text[Count]+File1Text[Count+1]).lower() == "if":
+            #Ensures words which include if (e.g. gift) are not included, but cases where 'if' is next to punctuation are included
+            if Count == 0 and not File1Text[Count+2].isalpha():
+                IfCounter1 += 1
+            elif Count == len(File1Text)-2:
+                if not File1Text[Count-1].isalpha():
+                    IfCounter1 += 1
+            else:
+                if not File1Text[Count-1].isalpha() and not File1Text[Count+2].isalpha():
+                    IfCounter1 += 1
+    if Count < len(File2Text)-1:
+        if (File2Text[Count]+File2Text[Count+1]).lower() == "if":
+            #Ensures words which include if (e.g. gift) are not included, but cases where 'if' is next to punctuation are included
+            if [(Count == 0 and not File2Text[Count+2].isalpha()) #If Count is 0, then cannot check [Count-1]
+                or (Count == len(File2Text)-2 and not File2Text[Count-1].isalpha()) #If Count == len(File2Text)-2, ghdn cannot check [Count+2]
+                or (not File2Text[Count-1].isalpha() and not File2Text[Count+2].isalpha())]:
+                IfCounter2 += 1
+    Count += 1
+
+#Opening the files for appending
+File1 = open("if.txt","a")
+File2 = open("mam.txt","a")
+
+#Appending the if counters to their respective files
+File1.write(str(IfCounter1))
+File2.write(str(IfCounter2))
+
+#Stating which file has more of the word 'if'
+if IfCounter1 > IfCounter2:
+    print("File 1 has more of the word 'if' than file 2")
+else:
+    print("File 2 has more of the word 'if' than file 1")
+
+#Closing the files
+File1.close()
+File2.close()
