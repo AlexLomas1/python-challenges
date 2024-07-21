@@ -1,12 +1,12 @@
-#Opening the files
+#Opening the files for reading
 File1 = open("if.txt","r")
 File2 = open("mam.txt","r")
 
 #Reading the files
-File1Text = File1.read()
-File2Text = File2.read()
+Text1 = File1.read()
+Text2 = File2.read()
 
-#Closing the files (as they are current open for reading)
+#Closing the files (as they are currently open for reading)
 File1.close()
 File2.close()
 
@@ -15,24 +15,20 @@ Count = 0
 IfCounter1 = 0
 IfCounter2 = 0
 #Counting the number of times 'if' appears in each file
-while Count < len(File1Text)-1 or Count < len(File2Text)-1:
-    if Count < len(File1Text)-1:
-        if (File1Text[Count]+File1Text[Count+1]).lower() == "if":
+while Count < len(Text1)-1 or Count < len(Text1)-1:
+    if Count < len(Text1)-1:
+        if (Text1[Count]+Text1[Count+1]).lower() == "if":
             #Ensures words which include if (e.g. gift) are not included, but cases where 'if' is next to punctuation are included
-            if Count == 0 and not File1Text[Count+2].isalpha():
+            if ((Count == 0 and not Text1[Count+2].isalpha()) #If Count is 0, then cannot check [Count-1]
+                or (Count == len(Text1)-2 and not Text1[Count-1].isalpha()) #If Count == len(Text1)-2, then cannot check [Count+2]
+                or (not Text1[Count-1].isalpha() and not Text1[Count+2].isalpha())): #If isalpha() for either value is true, then the 'if' must be part of a longer word rather than 'if' by itself
                 IfCounter1 += 1
-            elif Count == len(File1Text)-2:
-                if not File1Text[Count-1].isalpha():
-                    IfCounter1 += 1
-            else:
-                if not File1Text[Count-1].isalpha() and not File1Text[Count+2].isalpha():
-                    IfCounter1 += 1
-    if Count < len(File2Text)-1:
-        if (File2Text[Count]+File2Text[Count+1]).lower() == "if":
+    if Count < len(Text2)-1:
+        if (Text2[Count]+Text2[Count+1]).lower() == "if":
             #Ensures words which include if (e.g. gift) are not included, but cases where 'if' is next to punctuation are included
-            if [(Count == 0 and not File2Text[Count+2].isalpha()) #If Count is 0, then cannot check [Count-1]
-                or (Count == len(File2Text)-2 and not File2Text[Count-1].isalpha()) #If Count == len(File2Text)-2, ghdn cannot check [Count+2]
-                or (not File2Text[Count-1].isalpha() and not File2Text[Count+2].isalpha())]:
+            if ((Count == 0 and not Text2[Count+2].isalpha()) #If Count is 0, then cannot check [Count-1]
+                or (Count == len(Text2)-2 and not Text2[Count-1].isalpha()) #If Count == len(File2Text)-2, then cannot check [Count+2]
+                or (not Text2[Count-1].isalpha() and not Text2[Count+2].isalpha())): #If isalpha() for either value is true, then the 'if' must be part of a longer word rather than 'if' by itself
                 IfCounter2 += 1
     Count += 1
 
