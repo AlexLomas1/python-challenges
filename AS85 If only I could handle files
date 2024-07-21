@@ -43,8 +43,10 @@ File2.write(str(IfCounter2))
 #Stating which file has more of the word 'if'
 if IfCounter1 > IfCounter2:
     print("File 1 has more of the word 'if' than file 2")
-else:
+elif IfCounter2 > IfCounter1:
     print("File 2 has more of the word 'if' than file 1")
+else:
+    print("Both files have the same amount of the word 'if'")
 
 #Closing the files
 File1.close()
