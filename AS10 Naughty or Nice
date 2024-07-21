@@ -44,3 +44,6 @@ for Count in range(len(Text)):
 
 print("There are",NiceCount,"nice strings in this text file")
 print("There are",NaughtyCount,"naughty strings in this text file")
+
+#Closes the text file
+TextFile.close()
