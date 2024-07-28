@@ -1,0 +1,12 @@
+#Allows user to enter list of words, and splits the list into an array, with each word as an element
+Original = input("Enter the list of words: ").split()
+#Sorts the word list into alphabetical order. key=str.lower is used so that the sorting is case-insensitive (otherwise Z would come before a)
+Sorted = sorted(Original,key=str.lower)
+Sorted = (" ".join(Sorted))
+print(Sorted)
+#Creates and opens the file wordlist.txt for writing
+WordList = open("wordlist.txt","w")
+#Saves the sorted word list to the file
+WordList.write(Sorted)
+#Closes the file
+WordList.close()
