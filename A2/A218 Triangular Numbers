@@ -1,15 +1,3 @@
-#Array to store values of words in file
-WordValuesList = []
-#Function to calculate and store the values of each word
-def WordValue(word):
-    sum = 0
-    #Repeats for each letter in the word
-    for letter in list(word):
-        #ord(letter.upper())-64 returns the alphabetical position of letter (e.g. if letter is "a" it would return 1)
-        sum += ord(letter.upper())-64
-    #Saves word value to array
-    WordValuesList.append(sum)
-
 #Array to store triangle numbers
 TriNums = [1]
 #Function to calculate and store the next triangle number in the array
@@ -28,12 +16,15 @@ TriangleWordCount = 0
 
 for WordCount in range (len(WordsList)):
     #Calculates the value of the current word
-    WordValue(WordsList[WordCount])
+    WordValue = 0
+    for letter in list(WordsList[WordCount]):
+        #ord(letter.upper())-64 returns the alphabetical position of letter (e.g. if letter is "a" it would return 1)
+        WordValue += ord(letter.upper())-64
     #Causes the next triangle number to be calculated if the current value exceeds the highest stored triangle number
-    while WordValuesList[WordCount] > TriNums[len(TriNums)-1]:
+    while WordValue > TriNums[len(TriNums)-1]:
         NextTriNum(len(TriNums)+1)
     #If the current word value is a triangle number, counter is incremented by one
-    if WordValuesList[WordCount] in TriNums:
+    if WordValue in TriNums:
         TriangleWordCount += 1
 
 print("Number of triangle words in words.txt:",TriangleWordCount)
