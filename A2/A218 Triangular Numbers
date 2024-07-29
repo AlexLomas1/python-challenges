@@ -23,19 +23,17 @@ WordsList = Words.read()
 #Closes the text file
 Words.close()
 
-#Calculates the values of all the words in the text file
-for word in WordsList:
-    WordValue(word)
-
 #Variable used to count the number of triangle words
 TriangleWordCount = 0
 
-for value in WordValuesList:
+for WordCount in range (len(WordsList)):
+    #Calculates the value of the current word
+    WordValue(WordsList[WordCount])
     #Causes the next triangle number to be calculated if the current value exceeds the highest stored triangle number
-    while value > TriNums[len(TriNums)-1]:
+    while WordValuesList[WordCount] > TriNums[len(TriNums)-1]:
         NextTriNum(len(TriNums)+1)
     #If the current word value is a triangle number, counter is incremented by one
-    if value in TriNums:
+    if WordValuesList[WordCount] in TriNums:
         TriangleWordCount += 1
 
 print("Number of triangle words in words.txt:",TriangleWordCount)
