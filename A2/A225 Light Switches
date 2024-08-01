@@ -1,0 +1,28 @@
+NoOfSwitches = int(input("Enter number of switches: "))
+Switches = [False] * NoOfSwitches
+
+Repeat = True
+while Repeat:
+    inputs = input().split(" ")
+    #If an input is non-numerical, it stops the loop
+    if not inputs[0].isnumeric():
+        Repeat = False
+    else:
+        if int(input[0]) > int(input[1]):
+            Count = int(inputs[1])
+            while Count <= int(inputs[0]):
+                Switches[Count] = not Switches[Count]
+                Count += 1
+        else:
+            Count = int(inputs[0])
+            while Count <= int(inputs[1]):
+                Switches[Count] = not Switches[Count]
+                Count += 1
+
+#Counts the number of light switches which are currently on
+LightsOnCount = 0
+for CurrentSwitch in Switches:
+    if CurrentSwitch == True:
+        LightsOnCount += 1
+#Outputs the number of light switches that are currently on
+print(LightsOnCount)
