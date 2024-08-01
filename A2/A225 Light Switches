@@ -1,28 +1,36 @@
 NoOfSwitches = int(input("Enter number of switches: "))
+#Saves list containing the current status of each light switch, all start as being off
 Switches = [False] * NoOfSwitches
 
+#Allows loop to repeat until stopped
 Repeat = True
 while Repeat:
+    #Takes and splits the input into elements in a list
     inputs = input().split(" ")
+    #Note: the problem does not require inputs to be validated, so no validation is present.
     #If an input is non-numerical, it stops the loop
     if not inputs[0].isnumeric():
         Repeat = False
     else:
-        if int(input[0]) > int(input[1]):
+        if int(inputs[0]) > int(inputs[1]):
+            #Cycles through each of the light switches, from inputs[1] to inputs[0] inclusive
             Count = int(inputs[1])
             while Count <= int(inputs[0]):
+                #Reverses the status of the current light switch
                 Switches[Count] = not Switches[Count]
                 Count += 1
         else:
+            #Cycles through each of the light switches, from inputs[0] to inputs[1] inclusive
             Count = int(inputs[0])
             while Count <= int(inputs[1]):
+                #Reverse the status of the current light switch
                 Switches[Count] = not Switches[Count]
                 Count += 1
 
 #Counts the number of light switches which are currently on
-LightsOnCount = 0
+LightsCount = 0
 for CurrentSwitch in Switches:
     if CurrentSwitch == True:
-        LightsOnCount += 1
+        LightsCount += 1
 #Outputs the number of light switches that are currently on
-print(LightsOnCount)
+print(LightsCount)
