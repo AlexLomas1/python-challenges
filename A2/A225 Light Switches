@@ -1,23 +1,24 @@
-SwitchesNo = int(input("Enter number of switches: "))
+num_switches = int(input("Enter number of switches: "))
 #Initialising list containing the current status of each light switch, all starting as being off
-Switches = [False] * SwitchesNo
+switches = [False] * num_switches
 
-#Allows loop to repeat until stopped
-Continue = True
-while Continue:
+while True:
     #Takes and splits the input into elements in a list
     limits = input().split(" ")
     #If an input is non-numerical, or there are not 2 limits, it stops the loop
-    if len(limits) != 2 or not limits[0].isnumeric():
-        Continue = False
+    if len(limits) != 2 or not limits[0].isnumeric() or not limits[1].isnumeric():
+        break
+    start, end = int(limits[0]), int(limits[1])
+    #Ensures starting limit is less than or equal to the ending limit
+    if start > end:
+        start, end = end, start
+    #Ensures limits are within valid range
+    if start < 0 or end >= num_switches:
+        print("Error: limits outside of range")
     else:
-        #Ensures starting limit is less than or equal to the ending limit
-        if int(limits[0]) > int(limits[1]):
-            limits[0],limits[1] = limits[1],limits[0]
         #Reverses the statuses of the switches in the inputted range inclusive
-        for i in range(int(limits[0]),int(limits[1])+1):
-            Switches[i] = not Switches[i]
+        for i in range(start,end+1):
+            switches[i] = not switches[i]
 
 #Counts and ouputs the number of light switches which are currently on
-LightsCount = Switches.count(True)
-print(LightsCount)
+print(switches.count(True))
