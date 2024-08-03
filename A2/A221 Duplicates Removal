@@ -1,10 +1,10 @@
 def duplicates_removal(original):
     new_list = []
-    for Count in range(0,len(original)):
+    for element in original:
         #Checks if current element of the original list is a duplicate
-        if original[Count] not in new_list:
+        if element not in new_list:
             #Only if the current element is not a duplicate will it be added to new_list
-            new_list.append(original[Count])
+            new_list.append(element)
     #Returns the list without any duplicates
     return new_list
 
