@@ -2,7 +2,7 @@
 word1 = list(input("Enter string 1: "))
 word2 = list(input("Enter string 2: "))
 #Initialises the two counts to zero
-count1 = count2 = 0
+count1, count2 = 0, 0
 #Intialises list to store the merged characters from the two strings
 merged = [""] * (len(word1)+len(word2))
 #Initialises current_string, used to alternate between the strings being added to merged
