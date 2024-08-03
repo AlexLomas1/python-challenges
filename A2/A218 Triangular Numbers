@@ -1,30 +1,28 @@
 #Array to store triangle numbers
-TriNums = [1]
-#Function to calculate and store the next triangle number in the array
-def NextTriNum(n):
-    TriNums.append(0.5*n*(n+1))
+triangle_nums = [1]
+#Function to calculate and store the next triangle number in the list
+def next_triangle_num(n):
+    triangle_nums.append(0.5*n*(n+1))
 
 #Opens the text file
-Words = open("words.txt")
-#Reads the text file
-WordsList = Words.read()
-#Closes the text file
-Words.close()
+with open("words.txt") as words:
+    #Reads the text file
+    words_list = words.read()
 
 #Variable used to count the number of triangle words
-TriangleWordCount = 0
+triangle_word_count = 0
 
-for WordCount in range (len(WordsList)):
-    #Calculates the value of the current word
-    WordValue = 0
-    for letter in list(WordsList[WordCount]):
+#Calculates the value of each word in words_list
+for word in words_list:
+    word_value = 0
+    for letter in word:
         #ord(letter.upper())-64 returns the alphabetical position of letter (e.g. if letter is "a" it would return 1)
-        WordValue += ord(letter.upper())-64
+        word_value += ord(letter.upper())-64
     #Causes the next triangle number to be calculated if the current value exceeds the highest stored triangle number
-    while WordValue > TriNums[len(TriNums)-1]:
-        NextTriNum(len(TriNums)+1)
-    #If the current word value is a triangle number, counter is incremented by one
-    if WordValue in TriNums:
-        TriangleWordCount += 1
+    while word_value > triangle_nums[len(triangle_nums)-1]:
+        next_triangle_num(len(triangle_nums)+1)
+    #Counts the number of word value's which are triangle numbers
+    if word_value in triangle_nums:
+        triangle_word_count += 1
 
-print("Number of triangle words in words.txt:",TriangleWordCount)
+print("Number of triangle words in words.txt:",triangle_word_count)
