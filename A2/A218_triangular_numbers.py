@@ -1,6 +1,6 @@
 triangle_nums = [1]
-# Function to calculate and store the next triangle number in the list
 def next_triangle_num(n):
+    """Calculate the nth triangle number and store in triangle_nums"""
     triangle_nums.append(0.5*n*(n+1))
 
 # Opens and reads the text file
