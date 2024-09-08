@@ -14,7 +14,8 @@ def create_password(n):
     return password
 
 def brute_force_attack(password):
-    """Run every possible combination of characters from list characters until"""
+    """Try every possible combination of characters of increasing lengths 
+    until a combination that matches the given password is found."""
     # Stores whether the password has cracked or not.
     cracked = False
     # Initialising length to 1.
