@@ -3,8 +3,8 @@ alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m",
 
 def shift_alphabet(shift):
     shifted_alphabet = []
-    for i in range(25):
-        shifted_alphabet.append(alphabet[(i+shift)%25])
+    for i in range(26):
+        shifted_alphabet.append(alphabet[(i+shift)%26])
     return shifted_alphabet
 
 def encrypter():
@@ -24,7 +24,7 @@ def encrypter():
                 upper = True
             # Performs linear search for current character in alphabet, and if found
             # the character in shifted_alphabet with the same index is added to encrypted.
-            for i in range(25):
+            for i in range(26):
                 if char.lower() == alphabet[i]:
                     if upper:
                         encrypted += shifted_alphabet[i].upper()
@@ -50,7 +50,7 @@ def decrypter():
                 upper == True
             # Performs linear search for current character in shifted_alphabet, and if
             # found the character in alphabet with the same index is added to decrypted.
-            for i in range(25):
+            for i in range(26):
                 if char.lower() == shifted_alphabet[i]:
                     if upper:
                         decrypted += alphabet[i].upper()
@@ -58,6 +58,7 @@ def decrypter():
                         decrypted += alphabet[i]
                     break
     return decrypted
+
 
 choice = str(input("Would you like to encrypt or decrypt?: ")).lower()
 if choice == "encrypt":
