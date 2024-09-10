@@ -59,9 +59,9 @@ def decrypter():
                     break
     return decrypted
 
-
-choice = str(input("Would you like to encrypt or decrypt?: ")).lower()
-if choice == "encrypt":
-    print(encrypter())
-elif choice == "decrypt":
-    print(decrypter())
+if __name__ == "__main__":
+    choice = str(input("Would you like to encrypt or decrypt?: ")).lower()
+    if choice == "encrypt":
+        print(encrypter())
+    elif choice == "decrypt":
+        print(decrypter())
