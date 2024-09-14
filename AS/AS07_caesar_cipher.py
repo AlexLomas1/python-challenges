@@ -1,5 +1,5 @@
-alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m",
-            "n","o","p","q","r","s","t","u","v","w","x","y","z"]
+alphabet = ("a","b","c","d","e","f","g","h","i","j","k","l","m",
+            "n","o","p","q","r","s","t","u","v","w","x","y","z")
 
 def shift_alphabet(shift):
     shifted_alphabet = []
@@ -7,9 +7,7 @@ def shift_alphabet(shift):
         shifted_alphabet.append(alphabet[(i+shift)%26])
     return shifted_alphabet
 
-def encrypter():
-    original = str(input("Enter string to be encrypted: "))
-    shift = int(input("Enter number of shifts: "))
+def encrypter(original, shift):
     shifted_alphabet = shift_alphabet(shift)
     encrypted = ""
     for char in original:
@@ -33,9 +31,7 @@ def encrypter():
                     break
     return encrypted
 
-def decrypter():
-    encrypted = str(input("Enter text to be decrypted: "))
-    shift = int(input("Enter number of times it has been shifted: "))
+def decrypter(encrypted, shift):
     shifted_alphabet = shift_alphabet(shift)
     decrypted = ""
     for char in encrypted:
@@ -47,7 +43,7 @@ def decrypter():
             upper = False
             # Checks if current character is upper case.
             if char.upper() == char:
-                upper == True
+                upper = True
             # Performs linear search for current character in shifted_alphabet, and if
             # found the character in alphabet with the same index is added to decrypted.
             for i in range(26):
@@ -62,6 +58,10 @@ def decrypter():
 if __name__ == "__main__":
     choice = str(input("Would you like to encrypt or decrypt?: ")).lower()
     if choice == "encrypt":
-        print(encrypter())
+        original = input("Enter string to be encrypted: ")
+        shift = int(input("Enter number of shifts: "))
+        print(encrypter(original, shift))
     elif choice == "decrypt":
-        print(decrypter())
+        encrypted = input("Enter text to be decrypted: ")
+        shift = int(input("Enter number of times it has been shifted: "))
+        print(decrypter(encrypted, shift))
