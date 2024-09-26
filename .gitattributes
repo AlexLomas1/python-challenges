@@ -1,0 +1,2 @@
+# Allow SQL to appear in repository language statistics.
+*.sql linguist-detectable=true
